@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Note Search</title>
+	<link rel="stylesheet" href="/html/styles.css">
+</head>
+<body class="dracula-theme">
+	<div id="errorMessage" class="error-message"></div>
+	<div class="container">
+		<h1>Note Search</h1>
+		<div class="container-wrapper">
+			<div class="form-container">
+				<textarea id="noteContent" placeholder="Enter your note content..."></textarea>
+				<input type="text" id="noteLink" placeholder="Enter link...">
+				<input type="text" id="noteFolder" placeholder="Enter folder...">
+				<button id="pasteScreenshot">Paste Screenshot</button>
+				<button id="saveNote">Save Note</button>
+			</div>
+			<div class="main-content">
+				<div class="search-container">
+					<input type="text" id="searchQuery" placeholder="Search notes...">
+					<button id="searchNotes">Search</button>
+				</div>
+				<div id="notesList" class="notes-list"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="loader">
+		<div class="loader-spinner"></div>
+	</div>
+
+	<script src="/html/scripts.js"></script>
+	<script src="/html/js_ext.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+body.dracula-theme {
+	background-color: #282a36;
+	color: #f8f8f2;
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 10px;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form-container {
+	width: 15%;
+	margin-bottom: 20px;
+	position: relative; /* Ensure the image is positioned correctly */
+}
+
+.container-wrapper{
+	display: flex;
+	flex-direction: row;
+	gap:20px;
+}
+
+.main-content {
+	max-width: 85%;
+}
+
+textarea, input {
+	width: calc(100% - 20px);
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #44475a;
+	border: none;
+	color: #f8f8f2;
+	display: block;
+	resize: vertical; /* Allow resizing of textarea */
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #6272a4;
+	border: none;
+	color: #f8f8f2;
+	cursor: pointer;
+	margin-bottom: 10px; /* Add margin between buttons */
+}
+
+button:hover {
+	background-color: #50fa7b;
+	color: #282a36;
+}
+
+.notes-list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.note-item {
+	display: flex;
+	align-items: flex-start;
+	background-color: #44475a;
+	padding:20px 10px 10px 10px;
+	border-radius: 5px;
+	animation: fadeIn 0.5s ease-in-out;
+	position: relative;
+	overflow-x: hidden;
+}
+
+.note-item img {
+	width: 40%;
+	margin-right: 10px;
+	border-radius: 5px;
+	max-width: 100%; /* Ensure image does not overflow */
+	height: auto; /* Maintain aspect ratio */
+}
+
+.delete-button {
+	position: absolute;
+	display: block;
+	top: 5px;
+	right: 5px;
+	padding: 10px;
+	border: none;
+	border-radius: 50%;
+	color: #fc3737;
+	cursor: pointer;
+	width: 8px;
+	height: 8px;
+	line-height: 10px;
+}
+
+.delete-button:hover {
+	color: #ff0000;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.error-message {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	background-color: #ff5555;
+	color: #282a36;
+	padding: 10px;
+	border-radius: 5px;
+	display: none;
+	z-index: 999; /* Ensure error message is on top */
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 10px;
+	}
+
+	.form-container, .main-content {
+		width: 100%;
+	}
+
+	.note-item {
+		flex-direction: column;
+		align-items: flex-start; /* Align items to start for better readability */
+	}
+
+	.note-item img {
+		width: calc(50% - 20px); /* Adjust image width on smaller screens */
+		margin-bottom: 10px;
+		max-width: none; /* Remove max-width constraint */
+		height: auto;
+	}
+	
+	button, textarea, input { 
+		margin-right: 0 !important; /* Ensure no right margins for buttons and inputs in mobile view */  
+	}
+
+	.notes-list {
+		grid-template-columns: 1fr;
+	}
+}
+
+.form-container img {
+	width: calc(100% - 20px); /* Set image width to be max of container */
+	height: auto;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.loader {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+}
+
+.loader-spinner {
+	border: 8px solid rgba(255, 255, 255, 0.3);
+	border-top: 8px solid #50fa7b;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to{ transform: rotate(359deg); } }
+
+.error-message-container{
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(248, 76, 100, .9);
+	color: white;
+	padding: 1rem;
+	border-radius: 3px;
+
+	/* Hide by default */
+	display:none;
+	z-index: 1001;
+}
+
+.error-message-container p{
+	margin-bottom:.5em
+}
+
+#noteContent{
+	height: 20vh;
+	resize: vertical;
+}
