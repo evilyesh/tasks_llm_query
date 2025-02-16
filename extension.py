@@ -6,6 +6,7 @@ from config import OPENAI_API_KEY
 from fts import FTS # Import the fts module to use FTS functions
 
 fts = FTS()
+fts.db_init()
 
 def chat_with_model(messages, model="gpt-3.5-turbo", api_key=OPENAI_API_KEY):
 	url = "http://127.0.0.1:8989/v1/chat/completions"
@@ -94,6 +95,7 @@ def search_notes(query):
 	# Generate query with synonyms and theme
 	translation = generate_translation(query)
 	processed_query = generate_query_with_synonyms_and_theme(query + ' ' + translation)
+	processed_query += f" {query}"
 
 	# Search using FTS
 	print(processed_query)

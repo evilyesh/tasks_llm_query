@@ -7,7 +7,7 @@ class FTS:
 		self.cursor = None
 
 	def get_conn(self):
-		self.conn = sqlite3.connect('/home/yesh/Projects/PycharmProjects/AI/bert/texts.db')
+		self.conn = sqlite3.connect('./texts.db')
 		self.cursor = self.conn.cursor()
 
 	def db_init(self):
@@ -23,9 +23,26 @@ class FTS:
 		''')
 
 		self.conn.commit()
+		
+		self.cursor.execute('''
+		CREATE TABLE IF NOT EXISTS texts(
+			id INTEGER PRIMARY KEY,
+			content, 
+			keywords, 
+			link, 
+			embedding,
+			favicon,
+			folder,
+			content_en, 
+			img
+		);
+		''')
+
+		self.conn.commit()
+
 		self.conn.close()
 		self.conn = None
-		self.cursor = None
+		self.cursor = None 
 
 	def add_record(self, content, keywords, link, embedding, favicon, folder, content_en, img):
 		# Добавляем запись в основную таблицу
@@ -41,7 +58,7 @@ class FTS:
 		VALUES (?, ?, ?)
 		''', (content, content_en, keywords))
 
-		self.conn.commit()
+		self.conn.commit() 
 		self.conn.close()
 		self.conn = None
 		self.cursor = None
