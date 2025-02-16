@@ -2,3 +2,4 @@
 /extension_back.py
 /json.json
 /.venv/
+/__pycache__/
